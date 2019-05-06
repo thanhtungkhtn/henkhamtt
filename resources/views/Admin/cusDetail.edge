@@ -1,0 +1,32 @@
+@layout('layouts.main')
+
+@section('main')
+{{ style('main') }}
+@endsection
+
+@section('title')
+Admin-Hen Kham
+@endsection
+
+
+@section('content')
+<br/><br/>
+<!--
+<h2>Thank {{customers.name}} for trusting us.</h2>
+<h1>This is your order Code: {{ customers.id }}</h1>
+-->
+<h1>List Customer Detail:</h1>
+<ul>
+  @each(customer in customers)
+  <ul>
+    <li>Name: {{ customer.name }}</li>
+    <li>Email: {{ customer.email }}</li>
+    <li>Phone: {{ customer.phonenumber }}</li>
+    <li>Address: {{ customer.address }}</li>
+  </ul>
+  <br/><br/>
+  &#64;&#64;&#64;
+  <br/>
+  @endeach
+</ul>
+@endsection

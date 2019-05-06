@@ -1,0 +1,17 @@
+@layout('layouts.main')
+
+@section('main')
+{{ style('main') }}
+@endsection
+
+@section('title')
+Hen Kham
+@endsection
+
+
+@section('content')
+<br/><br/>
+<h2>Thank {{customers.name}} for trusting us.</h2>
+<h1>This is your order Code: {{ customers.id }}</h1>
+
+@endsection

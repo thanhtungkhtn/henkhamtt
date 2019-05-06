@@ -1,0 +1,44 @@
+@layout('layouts.main')
+
+@section('main')
+{{ style('main') }}
+@endsection
+
+@section('title')
+Admin - Sign up
+@endsection
+
+@section('content')
+  <div class="job-container">
+      <h1>Admin</h1>
+      <form action="{{ route('UserController.create') }}" method="POST">
+        {{ csrfField() }}
+
+        <label for="username">Username</label>
+        <input type="text" name="username" value="{{ old('username', '') }}">
+        @if(hasErrorFor('username'))
+            <span class="err">
+                {{ getErrorFor('username') }}
+            </span>
+        @endif
+
+        <label for="email">Email</label>
+        <input type="email" name="email" value="{{ old('email', '') }}">
+        @if(hasErrorFor('email'))
+            <span class="err">
+                {{ getErrorFor('email') }}
+            </span>
+        @endif
+
+        <label for="password">Password</label>
+        <input type="password" name="password">
+        @if(hasErrorFor('password'))
+            <span class="err">
+                {{ getErrorFor('password') }}
+            </span>
+        @endif
+
+        <button class="sm" type="submit">Join now</button>
+      </form>
+  </div>
+@endsection

@@ -1,0 +1,41 @@
+@layout('layouts.main')
+
+@section('main')
+{{ style('main') }}
+@endsection
+
+@section('title')
+Admin - Login
+@endsection
+
+@section('content')
+ 
+  <div class="job-container">
+    <h1>Admin Login now</h1>
+
+    @if(flashMessage('loginError'))
+        <span class="err">{{ flashMessage('loginError') }}</span>
+    @endif
+      <form action="{{ route('UserController.login') }}" method="POST">
+        {{ csrfField() }}
+
+        <label for="email">Email</label>
+        <input type="email" name="email" value="{{ old('email', '') }}">
+        @if(hasErrorFor('email'))
+            <span class="err">
+                {{ getErrorFor('email') }}
+            </span>
+        @endif
+
+        <label for="password">Password</label>
+        <input type="password" name="password">
+        @if(hasErrorFor('password'))
+            <span class="err">
+                {{ getErrorFor('password') }}
+            </span>
+        @endif
+
+        <button class="sm" type="submit">Login now</button>
+      </form>
+  </div>
+@endsection
